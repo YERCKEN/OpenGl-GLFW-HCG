@@ -44,14 +44,18 @@ public:
 
 // Función para trazar puntos del círculo
 void trazarPuntosCirculo(int xc, int yc, PuntoPantalla puntoCirculo, float r, float g, float b) {
+
     setPixel(xc + puntoCirculo.obtenerX(), yc + puntoCirculo.obtenerY(), r, g, b);
     setPixel(xc - puntoCirculo.obtenerX(), yc + puntoCirculo.obtenerY(), r, g, b);
-    setPixel(xc + puntoCirculo.obtenerX(), yc - puntoCirculo.obtenerY(), r, g, b);
-    setPixel(xc - puntoCirculo.obtenerX(), yc - puntoCirculo.obtenerY(), r, g, b);
     setPixel(xc + puntoCirculo.obtenerY(), yc + puntoCirculo.obtenerX(), r, g, b);
     setPixel(xc - puntoCirculo.obtenerY(), yc + puntoCirculo.obtenerX(), r, g, b);
+
+    //MEDIO ABAJO
+    setPixel(xc + puntoCirculo.obtenerX(), yc - puntoCirculo.obtenerY(), r, g, b);
+    setPixel(xc - puntoCirculo.obtenerX(), yc - puntoCirculo.obtenerY(), r, g, b);
     setPixel(xc + puntoCirculo.obtenerY(), yc - puntoCirculo.obtenerX(), r, g, b);
     setPixel(xc - puntoCirculo.obtenerY(), yc - puntoCirculo.obtenerX(), r, g, b);
+
 }
 
 // Función para trazar un círculo utilizando el algoritmo de Punto Medio

@@ -74,20 +74,31 @@ void setPixel(int x, int y, int r, int g, int b) {
 
 
 
+void cambiarColorFondo() {
+    //            R     G     B    OPACIDAD
+    glClearColor(0.1f, 0.1f, 0.1f,   1.0f    );
+
+    // Limpia el búfer 
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+
 
 int main() {
 
     GLFWwindow* window;
 
-    //verificacmos que incia bien la pantalla
+    //verificacmos que incia bien  GLFW
     if (!glfwInit()) {
         std::cerr << "Error: Fallo en la inicialización de GLFW." << std::endl;
         return -1;
     }
 
     // Crear una ventana con el ancho y alto definidos
-    window = glfwCreateWindow(ventanaAncho, ventanaAlto, "DDA LINEA BÁSCIA", NULL, NULL);
+    window = glfwCreateWindow(ventanaAncho, ventanaAlto, "OPENGL PRUEBA", NULL, NULL);
 
+    // POSICIÓN MANUAL
+   // glfwSetWindowPos(window, 100, 500);
 
     if (!window) {
 
@@ -101,11 +112,16 @@ int main() {
 
     glfwMakeContextCurrent(window);
 
+    //pixeleS
     glOrtho(0, ventanaAncho, 0, ventanaAlto, -1, 1);
+
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
+
+
+        cambiarColorFondo();
 
 
         //dibujar plano
@@ -113,21 +129,27 @@ int main() {
 
         //lineDDA
         //     ( x0,  y0, xend, yend,----- COLOR -----)
-        lineDDA(100, 100, 400, 300, 1.0f, 0.0f, 0.0f);
+        lineDDA(100, 100, 500, 100, 1.0f, 0.0f, 0.0f);
+
+        lineDDA(100, 100, 100, 500, 1.0f, 0.0f, 0.0f);
+
+        lineDDA(500, 100, 500, 500, 1.0f, 0.0f, 0.0f);
+
+        lineDDA(100, 500, 500, 500, 1.0f, 0.0f, 0.0f);
+
 
 
         // LineaBresenham
         //            (x0, y0,xend,yend,----- COLOR -----)
-        lineaBresenham(50, 50, 500, 100, 0.0f, 0.0f, 1.0f);
+        //lineaBresenham(50, 50, 500, 100, 0.0f, 0.0f, 1.0f);
 
         //CIRCULO
         //                       X    Y  RADIO  -----COLOR------          
         trazarCirculoPuntoMedio(400, 400, 100, 0.0f, 1.0f, 1.0f);
 
-
         //ELIPSE
         //           CENTRO(XY), RADIOS, -----COLOR------
-        dibujarElipse(400, 400, 100, 50, 1.0f, 1.0f, 0.0f);
+        //dibujarElipse(400, 400, 100, 50, 1.0f, 1.0f, 0.0f);
 
 
         glfwSwapBuffers(window);
