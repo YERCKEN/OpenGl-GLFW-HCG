@@ -1,5 +1,4 @@
 
-
 // HERRAMIENTAS GRÁFICAS: LÍNEA (DDA - BRESENHAM) CIRCULO Y ELIPSE
 
 #include <GLFW/glfw3.h>
@@ -12,7 +11,7 @@
 
 
 // Ancho y alto de la ventana
-const int ventanaAncho = 1280;
+const int ventanaAncho = 1500;
 const int ventanaAlto = 720;
 
 
@@ -55,7 +54,7 @@ void dibujarPlanoCartesiano(int ancho, int alto, int paso) {
 
 
 //           ( x0  ,  y0  , ------ COLOR ------)
-void setPixel(int x, int y, int r, int g, int b) {
+void setPixel(int x, int y, float r, float g, float b) {
     //GROZOR
     glPointSize(3.0f);
 
@@ -76,7 +75,7 @@ void setPixel(int x, int y, int r, int g, int b) {
 
 void cambiarColorFondo() {
     //            R     G     B    OPACIDAD
-    glClearColor(0.1f, 0.1f, 0.1f,   1.0f    );
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
     // Limpia el búfer 
     glClear(GL_COLOR_BUFFER_BIT);
@@ -130,25 +129,25 @@ int main() {
         //dibujarPlanoCartesiano(ventanaAncho, ventanaAlto, 50); 
 
         //lineDDA
-        
-        //RECTÁNGULO
+
         //     (x0,  y0,xend,yend,----- COLOR -----)
         //lineDDA(62, 123, 280, 123, 1.0f, 1.0f, 1.0f);
-     
+
 
         // LineaBresenham
         //            (x0, y0,xend,yend,----- COLOR -----)
-        lineaBresenham(165, 290, 568, 290, 0.0f, 0.0f, 1.0f);
-        lineaBresenham(506, 100, 850, 327, 0.0f, 0.0f, 1.0f);
-        lineaBresenham(100, 100, 100, 500, 0.0f, 0.0f, 1.0f);
-
-        lineaBresenham(850, 600, 1200, 300, 0.0f, 0.0f, 1.0f);
-
-
+        //lineaBresenham(165, 290, 568, 290, 0.0f, 0.0f, 1.0f);
 
         //CIRCULO
-        //                       X    Y  RADIO  -----COLOR------          
-        //trazarCirculoPuntoMedio(400, 400, 100, 0.0f, 1.0f, 1.0f);
+        //                       X    Y  RADIO  -----COLOR-----, tipo         
+        trazarCirculoPuntoMedio(100, 400, 100, 0.0f, 1.0f, 1.0f, 0.5f, 0.5f);
+        trazarCirculoPuntoMedio(300, 400, 100, 0.0f, 1.0f, 1.0f, -0.5, 1);
+        trazarCirculoPuntoMedio(500, 400, 100, 0.0f, 1.0f, 1.0f, 0.5, 1);
+        trazarCirculoPuntoMedio(700, 400, 100, 0.0f, 1.0f, 1.0f, -0.5, 1);
+        trazarCirculoPuntoMedio(900, 400, 100, 0.0f, 1.0f, 1.0f, 0.5, 1);
+        trazarCirculoPuntoMedio(1100, 400, 100, 0.0f, 1.0f, 1.0f, -0.5, 1);
+        trazarCirculoPuntoMedio(1300, 400, 100, 0.0f, 1.0f, 1.0f, 0.5, -0.5);
+
 
         //ELIPSE
         //           CENTRO(XY), RADIOS, -----COLOR------
